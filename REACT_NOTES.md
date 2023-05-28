@@ -103,22 +103,32 @@ React is a Library created for facebook.
   - the `v4()` function will automatically generate a UUID
 
 # Lesson 34: Adding a form
-  - goal of lesson: add a *real* form to *NewTicketForm.js* to replace the placeholder data that was originally there
+  ### goal of lesson: add a *real* form to *NewTicketForm.js* to replace the placeholder data that was originally there
   - a form is created using the `<form></form>` element
-  - the form has an event handler called onSubmit
-  - onSubmit will trigger {handleNewTicketFormSubmission}
-  - handleNewTicketFormSubmission will handle form submissions and will be defined in this same file NewTicketForm.js
+  - the form has an event handler called `onSubmit`
+  - `onSubmit` will trigger `{handleNewTicketFormSubmission}`
+  - `handleNewTicketFormSubmission` will handle form submissions and will be defined in this same file *NewTicketForm.js*
 
                 "Note that we are calling handleNewTicketFormSubmission a function, not a method. This component isn't a class component so it has functions, not methods that are called on the instance of a class. That also means we'll be using the function keyword, unlike with class components."
 
-        - in the context of this component, handleNewTicketFormSubmission is referred to as a function, not a method.
+        - in the context of this component, `handleNewTicketFormSubmission` is referred to as a function, not a method.
         - Since this component is not a class component, it uses functions instead of methods that are typically used in class instances.
-        - Therefore, the function keyword is used to define the handleNewTicketFormSubmission function 
+        - Therefore, the `function` keyword is used to define the `handleNewTicketFormSubmission` function 
         - unlike in class components where methods are defined using the arrow function syntax.
   
-  - remember, we use the `function` keyword because NewTicketForm.js is a function component. Therefore, handleNewTicketFormSubmission is *inside* another function 
-  - as usual, we need event.preventDefault()
-  - we use event.target to grab the values that just came from the 'submit' event
+  - remember, we use the `function` keyword because *NewTicketForm.js* is a function component. Therefore, `handleNewTicketFormSubmission` is *inside* another function 
+  - as usual, we need `event.preventDefault()`
+  - we use `event.target` to grab the values that just came from the 'submit' event
+
+
+# Lesson 35: Unidirectional Data Flow
+  ### goal of lesson: Although data (in react apps) can only flow *down* from parent to child, we need to somehow need to move data *up* from child to parent
+  - we need to pass data from child component (NewTicketForm) to the parent component (TicketControl)
+  - this is counter to unidirectional data flow
+  - Shared state should be lifted to a common ancestor for accessibility by child components
+  - likewise, props can only be passed *down* from parent to child
+  - the solution: use *callbacks* to pass information *up*
+
 
 
 
