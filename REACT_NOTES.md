@@ -1,6 +1,6 @@
 React is a Library created for facebook.
 
-## React and the virtual DOM
+# Lesson 3: React and the virtual DOM
   - manipulating the real DOM is inefficient
   - react creates a virtual DOM
   - react modifies the virtual DOM
@@ -8,25 +8,21 @@ React is a Library created for facebook.
   - then makes only those changes
   - this process repeats as the user interacts with the application
 
-## Using `create-react-app`
-  in the terminal run `npx create-react-app [app-name]`
-  `npm` is used for managing packages while `npx` actually executes those packages.
-  Use `npx` instead of `npm` to automatically execute packages without prior installation.
+# Lesson 4: Using `create-react-app`
+  - in the terminal run `npx create-react-app [app-name]`
+  - `npm` is used for managing packages while `npx` actually executes those packages.
+  - Use `npx` instead of `npm` to automatically execute packages without prior installation.
 
-  The project structure of a create-react-app includes directories like: 
-  - node_modules 
-  - public
-  - src
+  - The project structure of a create-react-app includes directories like: 
+    - node_modules 
+    - public
+    - src
 
-  The `src` directory contains the main code files, such as `App.js` (root component), `index.js` (entry point), and `index.css` (global stylesheet).
-
-  Other files in the project include `index.html`, `README.md`, `.gitignore`, and `package.json`.
-
-  Use `npm run start` to run the `create-react-app` project, which opens a page at http://localhost:3000/.
-
-  `index.js` uses ReactDOM to insert the React component tree into the DOM.
-
-  webpack and React work together to manage dependencies, bundle files, and render the React application.
+  - The `src` directory contains the main code files, such as `App.js` (root component), `index.js` (entry point), and `index.css` (global stylesheet).
+  - Other files in the project include `index.html`, `README.md`, `.gitignore`, and `package.json`.
+  - Use `npm run start` to run the `create-react-app` project, which opens a page at http://localhost:3000/.
+  - `index.js` uses ReactDOM to insert the React component tree into the DOM.
+  - webpack and React work together to manage dependencies, bundle files, and render the React application.
 
 ## React Components
   - Components are the building blocks of React
@@ -109,10 +105,9 @@ React is a Library created for facebook.
   - `onSubmit` will trigger `{handleNewTicketFormSubmission}`
   - `handleNewTicketFormSubmission` will handle form submissions and will be defined in this same file *NewTicketForm.js*
 
-                "Note that we are calling handleNewTicketFormSubmission a function, not a method. This component isn't a class component so it has functions, not methods that are called on the instance of a class. That also means we'll be using the function keyword, unlike with class components."
-
         - in the context of this component, `handleNewTicketFormSubmission` is referred to as a function, not a method.
-        - Since this component is not a class component, it uses functions instead of methods that are typically used in class instances.
+        - Since this component is a function component, it uses functions. 
+        - Methods are typically used in class instances.
         - Therefore, the `function` keyword is used to define the `handleNewTicketFormSubmission` function 
         - unlike in class components where methods are defined using the arrow function syntax.
   
@@ -157,7 +152,7 @@ React is a Library created for facebook.
     - add propTypes array for `ticketList`
   
   - *FILE:* `TicketControl.js`: 
-    - create method `handleAddingNewTicketToList`, which takes a newTicket as a parameter, adds a ticket to a newMainTicketList, then sets the state with the new list
+    - create method `handleAddingNewTicketToList`, which takes a newTicket as a parameter, adds a ticket to newMainTicketList, then sets the state with the new list
     - then we pass `handleAddingNewTicketToList` down to `NewTicketForm` component as a prop called `onNewTicketCreation`. (this happens in `render()`)
   
   - *FILE:* `NewTicketForm.js`: 
@@ -168,8 +163,7 @@ React is a Library created for facebook.
     - a ticket object is passed as an argument to `onNewTicketCreation`
       - reminder: `onNewTicketCreation` is really just the "downstream" implementation of `handleAddingNewTicketToList`
 
-
-
   - NOTE: Event handler functions are commonly prefixed with "handle" in their names. Props that contain event handler functions are typically prefixed with "on." The purpose of prefixing is to differentiate between the prop itself and the function that handles the actions triggered by the event. The prop is used when the event occurs, while the function associated with it actually performs the necessary actions. Using consistent naming conventions helps easily identify which props and functions are related. The naming ensures that it's clear whether we are referencing a function or a prop that contains a function.
 
 
+# Lesson 37: Styling React: CSS Objects
