@@ -24,35 +24,31 @@ React is a Library created for facebook.
   - `index.js` uses ReactDOM to insert the React component tree into the DOM.
   - webpack and React work together to manage dependencies, bundle files, and render the React application.
 
-## React Components
+
+# Lesson 5: React Components
   - Components are the building blocks of React
-  - We will be working with 2 types of components:
-    - function components
-    - class components
-  - React applications have a single root component called `App`
-  - `App` is a parent to all other components
-  - It is auto generated with `create-react-app`, though we will always delete it and start from scratch
+  - We will work with 2 main kinds of components: **function components** and **class components**
+  - all react components have a single auto-generated root component called `App`. We will always delete it and start from scratch
+  ### Basic structure of a function component:
+    ```js
+      import React from "react";
 
-### Basic structure of a function component:
-  ```js
-    import React from "react";
-
-    function ThisIsAFunctionalComponent(){
-      return (
-        <div>
-          // jsx code goes here
-        </div>
-      );
-    }
-    export default ThisIsAFunctionalComponent;
-  ```
-
-  - it is a function that returns JSX code wrapped in a div
-  - the React library is imported with an import statement
-  - components must be exported to make them available to the rest of the application
-  - function components *cannot change state*
-  - *always* use function components where possible to minimize state complexity
-  - best practice: build completely static sites, then refactor with *class components* as needed
+      function ThisIsAFunctionalComponent(){
+        return (
+          <div>
+            // jsx code goes here
+          </div>
+        );
+      }
+      export default ThisIsAFunctionalComponent;
+    ```
+    
+    - it is a function that returns JSX code wrapped in a div
+    - the React library is imported with an import statement
+    - components must be exported to make them available to the rest of the application
+    - function components **cannot change state**
+    - *always use function components where possible to minimize state complexity*
+    - best practice: build completely static sites, then refactor with **class components** as needed
 
 ### Basic structure of a class component:
   ```js
@@ -70,9 +66,9 @@ React is a Library created for facebook.
         );
       }
     }
-
     export default ThisIsAClassComponent;
   ```
+
   - Class components are used to add state to a component
   - this is not a function, but a custom class that extends the base functionality of a Component class that React provides
   - Class components have a constructor that takes props as an argument.
@@ -88,6 +84,7 @@ React is a Library created for facebook.
     `setState()` is an *async* method
 
 
+# Lesson 6: Introduction to JSX
 
 
 # Lesson 33: UUID Library
