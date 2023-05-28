@@ -127,8 +127,49 @@ React is a Library created for facebook.
   - this is counter to unidirectional data flow
   - Shared state should be lifted to a common ancestor for accessibility by child components
   - likewise, props can only be passed *down* from parent to child
-  - the solution: use *callbacks* to pass information *up*
+  
+  - the solution: use *callbacks* to pass information *up*. Here's how it works:
+    1. Parent component (that has state) defines a method and passes it as a prop to the child component
+    2. we add this method to a function in the child component in the form of a callback
+    3. since the callback exists in the parent component, the parent has access to it's data when the child executes it.
+  
+  - Here's how this looks in the help queue app:
+    1. create a method called `onNewTicketCreation` in TicketControl (parent)
+    2. pass `onNewTicketCreation` to NewTicketForm (child) as a prop
+    3. in NewTicketForm (child), add `onNewTicketCreation` as a callback in the function `handleNewTicketFormSubmission`
+    4. form data gets passed into the `onNewTicketCreation` callback
+    5. TicketControl (parent) will have access  to the form data, which it can then add to as a ticket to `mainTicketList`
 
 
+# Lesson 36: Passing Data Via Callbacks
+  ### Goal
+    1. Move mainTicketList into state.
+    2. Create a method in TicketControl that will take form data and turn it into an actual ticket.
+    3. Pass this method down to NewTicketForm as a prop — and also add PropTypes.
+    4. Add our new method as a callback to the existing function in NewTicketForm so that it's triggered when a user submits the form.
+
+  - *FILE:* `TicketControl.js`: 
+    - we add and empty array `mainTicketList` to state in the constructor
+    - still in TicketControl, we pass `mainTicketList` down to `TicketList` as a prop called `ticketList` (this is the name we'll use to access it as a prop in `TicketList.js`). (this happens in `render()`)
+  
+  - *FILE:* `TicketList.js`: 
+    - we add props as a parameter to the TicketList component
+    - add propTypes array for `ticketList`
+  
+  - *FILE:* `TicketControl.js`: 
+    - create method `handleAddingNewTicketToList`, which takes a newTicket as a parameter, adds a ticket to a newMainTicketList, then sets the state with the new list
+    - then we pass `handleAddingNewTicketToList` down to `NewTicketForm` component as a prop called `onNewTicketCreation`. (this happens in `render()`)
+  
+  - *FILE:* `NewTicketForm.js`: 
+    - we add props as a parameter to the NewTicketForm component
+    - add propTypes function for `onNewTicketCreation`
+    - add `import { v4 } from 'uuid';`
+    - update `handleNewTicketFormSubmission` to execute `onNewTicketCreation` as a callback. 
+    - a ticket object is passed as an argument to `onNewTicketCreation`
+      - reminder: `onNewTicketCreation` is really just the "downstream" implementation of `handleAddingNewTicketToList`
+
+
+
+  - NOTE: Event handler functions are commonly prefixed with "handle" in their names. Props that contain event handler functions are typically prefixed with "on." The purpose of prefixing is to differentiate between the prop itself and the function that handles the actions triggered by the event. The prop is used when the event occurs, while the function associated with it actually performs the necessary actions. Using consistent naming conventions helps easily identify which props and functions are related. The naming ensures that it's clear whether we are referencing a function or a prop that contains a function.
 
 
