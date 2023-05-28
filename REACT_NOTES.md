@@ -29,61 +29,96 @@ React is a Library created for facebook.
   webpack and React work together to manage dependencies, bundle files, and render the React application.
 
 ## React Components
-- Components are the building blocks of React
-- We will be working with 2 types of components:
-  - function components
-  - class components
-- React applications have a single root component called `App`
-- `App` is a parent to all other components
-- It is auto generated with `create-react-app`, though we will always delete it and start from scratch
+  - Components are the building blocks of React
+  - We will be working with 2 types of components:
+    - function components
+    - class components
+  - React applications have a single root component called `App`
+  - `App` is a parent to all other components
+  - It is auto generated with `create-react-app`, though we will always delete it and start from scratch
 
 ### Basic structure of a function component:
-```js
-  import React from "react";
+  ```js
+    import React from "react";
 
-  function ThisIsAFunctionalComponent(){
-    return (
-      <div>
-        // jsx code goes here
-      </div>
-    );
-  }
-
-  export default ThisIsAFunctionalComponent;
-```
-
-- it is a function that returns JSX code wrapped in a div
-- the React library is imported with an import statement
-- components must be exported to make them available to the rest of the application
-- function components *cannot change state*
-- *always* use function components where possible to minimize state complexity
-- best practice: build completely static sites, then refactor with *class components* as needed
-
-### Basic structure of a class component:
-```js
-  import React, { Component } from 'react';
-
-  class ThisIsAClassComponent extends React.Component {
-
-    constructor(props) {
-      super(props);
-      this.state = {};
-    }
-
-    render() {
+    function ThisIsAFunctionalComponent(){
       return (
+        <div>
+          // jsx code goes here
+        </div>
       );
     }
-  }
+    export default ThisIsAFunctionalComponent;
+  ```
 
-  export default ThisIsAClassComponent;
-```
-- Class components are used to add state to a component
-- this is not a function, but a custom class that extends the base functionality of a Component class that React provides
-- Class components have a constructor that takes props as an argument.
-- The constructor uses the super keyword to access the parent class' constructor and inherit functionality from the React.Component class.
-- State in class components is declared using the syntax this.state = {}; and is defined as a JavaScript object with key-value pairs.
-- Class components always have a render() method that returns JSX content to be added to the virtual DOM.
-- An import statement is used to import the React library and the Component class for class components.
-- Class components must be exported to be available to the rest of the application.
+  - it is a function that returns JSX code wrapped in a div
+  - the React library is imported with an import statement
+  - components must be exported to make them available to the rest of the application
+  - function components *cannot change state*
+  - *always* use function components where possible to minimize state complexity
+  - best practice: build completely static sites, then refactor with *class components* as needed
+
+### Basic structure of a class component:
+  ```js
+    import React, { Component } from 'react';
+
+    class ThisIsAClassComponent extends React.Component {
+
+      constructor(props) {
+        super(props);
+        this.state = {};
+      }
+
+      render() {
+        return (
+        );
+      }
+    }
+
+    export default ThisIsAClassComponent;
+  ```
+  - Class components are used to add state to a component
+  - this is not a function, but a custom class that extends the base functionality of a Component class that React provides
+  - Class components have a constructor that takes props as an argument.
+  - The constructor uses the super keyword to access the parent class' constructor and inherit functionality from the React.Component class.
+  - State in class components is declared using the syntax this.state = {}; and is defined as a JavaScript object with key-value pairs.
+  - Class components always have a render() method that returns JSX content to be added to the virtual DOM.
+  - An import statement is used to import the React library and the Component class for class components.
+  - Class components must be exported to be available to the rest of the application.
+
+  #### method to update state:
+    `this.setState({propertyToUpdate: newValue})`
+    *Always use the setState() method to update state in a pure React application*
+    `setState()` is an *async* method
+
+
+
+
+# Lesson 33: UUID Library
+  - its not best practice to use an array index as a key
+  - each ticket should have it's own unique id
+  - the UUID ('universally unique identifier') library is available in `create-react-app` to generate unique id's
+  - to use UUID: in the applicable file, `import { v4 } from 'uuid';`
+  - use v4 to set the ID property of the desired object. i.e. `id: v4()`
+  - the `v4()` function will automatically generate a UUID
+
+# Lesson 34: Adding a form
+  - goal of lesson: add a *real* form to *NewTicketForm.js* to replace the placeholder data that was originally there
+  - a form is created using the `<form></form>` element
+  - the form has an event handler called onSubmit
+  - onSubmit will trigger {handleNewTicketFormSubmission}
+  - handleNewTicketFormSubmission will handle form submissions and will be defined in this same file NewTicketForm.js
+
+                "Note that we are calling handleNewTicketFormSubmission a function, not a method. This component isn't a class component so it has functions, not methods that are called on the instance of a class. That also means we'll be using the function keyword, unlike with class components."
+
+        - in the context of this component, handleNewTicketFormSubmission is referred to as a function, not a method.
+        - Since this component is not a class component, it uses functions instead of methods that are typically used in class instances.
+        - Therefore, the function keyword is used to define the handleNewTicketFormSubmission function 
+        - unlike in class components where methods are defined using the arrow function syntax.
+  
+  - remember, we use the `function` keyword because NewTicketForm.js is a function component. Therefore, handleNewTicketFormSubmission is *inside* another function 
+  - as usual, we need event.preventDefault()
+  - we use event.target to grab the values that just came from the 'submit' event
+
+
 
