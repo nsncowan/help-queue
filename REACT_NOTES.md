@@ -1,6 +1,6 @@
 React is a Library created for facebook.
 
-# Lesson 3: React and the virtual DOM
+# W3L3: React and the virtual DOM
   - manipulating the real DOM is inefficient
   - react creates a virtual DOM
   - react modifies the virtual DOM
@@ -50,24 +50,24 @@ React is a Library created for facebook.
     - *always use function components where possible to minimize state complexity*
     - best practice: build completely static sites, then refactor with **class components** as needed
 
-### Basic structure of a class component:
-  ```js
-    import React, { Component } from 'react';
+  ### Basic structure of a class component:
+    ```js
+      import React, { Component } from 'react';
 
-    class ThisIsAClassComponent extends React.Component {
+      class ThisIsAClassComponent extends React.Component {
 
-      constructor(props) {
-        super(props);
-        this.state = {};
+        constructor(props) {
+          super(props);
+          this.state = {};
+        }
+
+        render() {
+          return (
+          );
+        }
       }
-
-      render() {
-        return (
-        );
-      }
-    }
-    export default ThisIsAClassComponent;
-  ```
+      export default ThisIsAClassComponent;
+    ```
 
   - Class components are used to add state to a component
   - this is not a function, but a custom class that extends the base functionality of a Component class that React provides
@@ -164,3 +164,45 @@ React is a Library created for facebook.
 
 
 # Lesson 37: Styling React: CSS Objects
+
+# W4 L2: Overview of Next Steps: Adding READ, UPDATE, and DELETE Functionality
+  - there is no canonical way to add UPDATE and DELETE functionality to a react app
+
+# W4 L3: Planning our Application: part 3
+  - GOAL: plan out a TicketDetail component
+  - we currently have CREATE & READ(all) functionality, but we need to be able to READ individual tickets
+  - main question: where in our app structure should we place TicketDetail?
+  - Placing TicketDetail below Ticket component would require prop drilling, which should be avoided.
+  - Passing data directly from TicketControl to TicketDetail simplifies the application, since TicketControl already is handling state.
+  - we will add some new local state to TicketControl. The default state will look like this:
+    ```js
+      this.state = {
+        formVisibleOnPage: false,
+        mainTicketList: [],
+        selectedTicket: null // this is the new "state slice" we will add
+      };
+    ```
+  - each of the above properties is a "state slice" 
+  - a state slice is a piece of state that can be mutated independently of other state slices.
+  - Our first state slice determines whether or not a form should show on the page. It is local state.
+  - Our second state slice holds the list of all tickets. It is shared state.
+  - Our third state slice will determine whether our TicketDetail component should show or not.
+
+# W4 L4: Using JSX Expressions with Arguments
+  - When using JavaScript functions in JSX curly braces, be aware of the evaluation timing.
+  - Adding parentheses to a function name in JSX will invoke it immediately instead of waiting for an event.
+  - Callback functions should be passed without parentheses to ensure they are invoked at the appropriate time.
+  - If we need to pass an argument to a function in JSX curly braces, we can use `() =>` e.g:
+      ```js 
+      <div onClick={ () => doAThing(someOtherThing) }>Click This Button To Do A Thing</div> 
+      ```
+  
+# W4 L5: Showing Ticket Detail
+  Here are the things we need to do to add ticket detail functionality to our site:
+    1. Create a placeholder TicketDetail component (it will be updated to take props later in this lesson).
+    2. Update **TicketControl** to include a selectedTicket state slice.
+    3. Create a method in **TicketControl** that will handle when a ticket is clicked.
+    4. Create a new conditional in **TicketControl** to handle the TicketDetail component.
+    5. Use props to pass down our method for handling a ticket click first to our TicketList component and then to the Ticket component, where the method will be attached to a ticket.
+    6. Once the selectedTicket state is properly being updated, update the TicketDetail component to accept TicketDetail props.
+    7. Add PropTypes for props as needed.
