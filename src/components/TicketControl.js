@@ -11,7 +11,7 @@ class TicketControl extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      formVisibleOnPage: false,
+      stateName: 'list',
       mainTicketList: [], // adds mainTicketList to state. added in lesson 36
       selectedTicket: null, // this is the new state slice added in the TicketDetail lesson
       editing: false
