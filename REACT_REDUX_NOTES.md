@@ -13,6 +13,7 @@
     - reducers - reducers will update (or mutate) state by communicating with the store
     - actions
 
-
+# W5 L3 Setting up our first project
+  
 
        
