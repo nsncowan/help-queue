@@ -48,3 +48,19 @@
         console.log(realName); // => 'Bruce Wayne'
       ```
   - `const { name, realName } = hero` is an object destructuring assignment. This statement defines the variables `name` and `realName`, then assigns to them the values of properties `hero.name` and `hero.realName` correspondingly.
+
+# W5 L6 Anatomy of a reducer
+  - The parameters of a reducer are typically defined as `(state = {}, action)`.
+  - The first parameter represents the current state, which usually has a default value.
+  - The second parameter is an *object* that contains a `type` property indicating the action to be taken.
+  - This object may contain other properties that are needed to update the current state.
+  - reminder: reducers are always pure functions and should not directly modify the application state.
+  - All a reducer cares about is 
+    - taking a thing, 
+    - applying an action to a copy of that thing,
+    - then returning the altered copy. 
+    - It doesn't know anything else about our application such as how state will be stored or applied in the UI.
+    - _Rephrase_: Instead, reducers create a copy of the state, apply the action to the copy, and return the altered copy.
+  - reducers use a switch statement to determine which action should be executed.
+  - It's important to include break or return statements within each case to prevent unintended behavior.
+  - Action `type`s are strings, and should be all caps and words separated by underscores. e.g. `ACTION_ONE`

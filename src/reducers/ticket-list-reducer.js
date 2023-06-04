@@ -1,3 +1,5 @@
+// reducers take 2 params: the first param is the current state, in this example it's {}
+// the second param is an object, which contains a 'type' property. This determines the action that will be taken.
 const reducer = (state = {}, action) => {
   const { names, location, issue, id } = action;
   switch (action.type) {
