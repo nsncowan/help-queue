@@ -20,10 +20,10 @@ class TicketControl extends React.Component {
   }
  
   handleClick = () => {
-    let nextState = null;
+    let nextState = null; // =====>>>>> this defines where the 'click' will take the user.
     let nextSelectedTicket = this.state.selectedTicket;
     switch(this.state.stateName){
-      case 'ticketDetail':
+      case 'ticketDetail': // =====>>>>> this is the current state (if this were a conditional, it would be an 'if' or 'else if')
         nextState = 'list'
         nextSelectedTicket = null;
         break;
@@ -40,10 +40,10 @@ class TicketControl extends React.Component {
         nextState = 'list';
         break;
     }
-    this.setState(prevState => ({
+    this.setState({
       stateName: nextState,
       selectedTicket: nextSelectedTicket
-    }))
+    })
   };
 
   handleChangingSelectedTicket = (id) => {
