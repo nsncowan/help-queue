@@ -40,7 +40,8 @@ class TicketControl extends React.Component {
         nextState = 'list';
         break;
     }
-    this.setState({
+    // BELOW: this is where the applicable 'case' is actually used to set the state
+    this.setState({ 
       stateName: nextState,
       selectedTicket: nextSelectedTicket
     })

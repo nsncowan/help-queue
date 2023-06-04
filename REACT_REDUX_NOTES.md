@@ -14,6 +14,19 @@
     - actions
 
 # W5 L3 Setting up our first project
-  
-
+  - the create-react-app comes with Jest for testing
+  - create-resct-app does not come with redux by default
+  - similar testing file structure as earlier in the curriculum
+    - src
+      |__ __tests__
+        |__ reducers
+          |__ ticket-list-reducer.test.js
+      |__ reducers
+  - NOTE:
+    - we use hyphens, not underscores to separate words
+    - the name of the reducer should match the name of the corresponding file, and vice versa
        
+
+# W5 L4 Writing Our First Redux Test
+  - goal: write our first test and learn a bit about reducers
+  
