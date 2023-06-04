@@ -29,4 +29,22 @@
 
 # W5 L4 Writing Our First Redux Test
   - goal: write our first test and learn a bit about reducers
-  
+  - the test syntax is familiar, standard Jest syntax.
+  - Reducers are pure functions, so they don't hold information about an app's current state. BUT, they take the current state, and an action, as an argument to determine how the state should be changed.
+  - in this lesson we write an intro test that just returns an empty state, same as the input. 
+
+# W5 L5 Writing Our Second Redux Test
+  - goal: write and pass a test for adding a ticket
+  - NOTE ON OBJECT DESTRUCTURING:
+      ```js
+        const hero = {
+        name: 'Batman',
+        realName: 'Bruce Wayne'
+        };
+
+        const { name, realName } = hero;
+
+        console.log(name);     // => 'Batman',
+        console.log(realName); // => 'Bruce Wayne'
+      ```
+  - `const { name, realName } = hero` is an object destructuring assignment. This statement defines the variables `name` and `realName`, then assigns to them the values of properties `hero.name` and `hero.realName` correspondingly.
