@@ -57,9 +57,9 @@ class TicketControl extends React.Component {
 
   handleAddingNewTicketToList = (newTicket) => {
     const newMainTicketList = this.state.mainTicketList.concat(newTicket);
-    this.setState(prevState => ({
+    this.setState({
       mainTicketList: newMainTicketList
-    }));
+    });
     this.handleClick()
     };
 
