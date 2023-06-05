@@ -77,30 +77,27 @@ class TicketControl extends React.Component {
     this.setState({stateName: "editing"});
   }
 
-  handleEditingTicketInListToBeClickedOnLaterWhenYouNeedToUpdateAFormForWhenYouUseCreateReactAppButDoNotKnowWhatYouAreDoingButHaveToDoItAnyWayAlright = (ticketToEdit) => {
+  handleEditingTicketInList = (ticketToEdit) => {
     const editedMainTicketList = this.state.mainTicketList
       .filter(ticket => ticket.id !== this.state.selectedTicket.id)
       .concat(ticketToEdit);
       this.setState({
         mainTicketList: editedMainTicketList,
         stateName: "list"
-
-        
       });
-
   }
   
 
   render (){
     let currentlyVisibleState = null;
     let buttonText = null;
-    let addTicketButton = null; //thhanks camaron
+    let addTicketButton = null; //thanks camaron
 
     switch(this.state.stateName){
       case "editing":
         currentlyVisibleState = <EditTicketForm 
         ticket={this.state.selectedTicket}
-        onClickingEdit ={this.handleEditingTicketInListToBeClickedOnLaterWhenYouNeedToUpdateAFormForWhenYouUseCreateReactAppButDoNotKnowWhatYouAreDoingButHaveToDoItAnyWayAlright } />
+        onClickingEdit ={this.handleEditingTicketInList } />
         buttonText= "Return To Ticket List";
         break;
       case 'ticketDetails':
