@@ -27,7 +27,7 @@ class TicketControl extends React.Component {
         nextState = 'list'
         nextSelectedTicket = null;
         break;
-      case 'troubleshoot':
+      case 'troubleshoot': // 'troubleshoot' is possibly because there are now multiple uses for 'form', so we need an in-between state before landing on a specific 'form'.
         nextState = 'form';
         break;
       case 'form':
@@ -52,7 +52,6 @@ class TicketControl extends React.Component {
         selectedTicket: selectedTicket,
         stateName: 'ticketDetails'
       });
-
   }
 
   handleAddingNewTicketToList = (newTicket) => {
