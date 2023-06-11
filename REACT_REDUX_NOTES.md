@@ -35,7 +35,7 @@
 
 # W5 L5 Writing Our Second Redux Test
   - goal: write and pass a test for adding a ticket
-  - NOTE ON OBJECT DESTRUCTURING:
+  - NOTE ON *OBJECT DESTRUCTURING*:
       ```js
         const hero = {
         name: 'Batman',
@@ -49,7 +49,7 @@
       ```
   - `const { name, realName } = hero` is an object destructuring assignment. This statement defines the variables `name` and `realName`, then assigns to them the values of properties `hero.name` and `hero.realName` correspondingly.
 
-# W5 L6 Anatomy of a reducer
+# W5 L7 Anatomy of a reducer
   - The parameters of a reducer are typically defined as `(state = {}, action)`.
   - The first parameter represents the current state, which usually has a default value.
   - The second parameter is an *object* that contains a `type` property indicating the action to be taken.
@@ -64,3 +64,24 @@
   - reducers use a switch statement to determine which action should be executed.
   - It's important to include break or return statements within each case to prevent unintended behavior.
   - Action `type`s are strings, and should be all caps and words separated by underscores. e.g. `ACTION_ONE`
+
+# W5 L8 The Redux Store
+  - The Redux store has three main functions:
+    - It holds the application state.
+    - It allows us to access the state using the `getState()` function.
+    - It enables us to update the state using the `dispatch()` function, which takes an action as an argument.
+
+  - `createStore()` is used to create a Redux store. Here's the example from the lesson:
+  ```js
+  const { createStore } = Redux;
+  const store = createStore(ticketListReducer);
+  ```
+  - First, we destructure the `createStore` function from the Redux library using ES6 destructuring. This allows us to directly access the `createStore` function without having to reference `Redux.createStore`.
+  - Next, we call `createStore()` and pass in the `ticketListReducer` as an argument. The reducer is responsible for defining how the state should be updated in response to different actions. It receives the current state and an action, and returns a new state based on the action type.
+  - Once the store is created, you can use its methods such as getState(), dispatch(), and subscribe() to access and update the state, as well as listen for state changes.
+  
+  - To track changes in the store's state, we use the `subscribe()` method. 
+    - It allows us to provide a callback function that will be called whenever the state changes. 
+    - In the example, `store.subscribe(() => console.log(store.getState()))` is used to log the state to the console whenever it changes.
+
+# W5 L10 Introduction to the react redux library
