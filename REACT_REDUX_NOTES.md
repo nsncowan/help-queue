@@ -85,3 +85,18 @@
     - In the example, `store.subscribe(() => console.log(store.getState()))` is used to log the state to the console whenever it changes.
 
 # W5 L10 Introduction to the react redux library
+
+# W6 L2 Introduction to date-fns
+  - goal: learn about date-fns, which is a library that helps manage times and dates.
+  - add the date-fns library to our project:
+    - `npm install date-fns@2`
+  - to use a specific function from date-fns, we use `import` statements with the following syntax:
+    - `import { formatDistanceToNow } from 'date-fns';`
+  - now we can use the function as needed:
+    - ```js
+      formatDistanceToNow(new Date(), {
+      addSuffix: true
+      });
+      ```
+
+
